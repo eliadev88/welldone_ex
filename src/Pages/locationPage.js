@@ -51,7 +51,7 @@ class LocationPage extends React.Component {
 
 
     addLocation() {
-        if (this.props.categories.length ==0) {
+        if (this.props.categories.length ===0) {
             alert('first add a category');
             return;
         }
@@ -74,7 +74,7 @@ class LocationPage extends React.Component {
         if (!this.state.editMode) {
             this.setState({editMode: true});
             if (this.state.addMode) {
-                this.props.locations.pop();
+                store.dispatch(this.props.deleteLocation(this.state.editRecord));
                 this.setState({addMode: false});
                 this.setState({disabledAdd: false});
             }
@@ -90,7 +90,7 @@ class LocationPage extends React.Component {
         if (!this.state.removeMode) {
             this.setState({removeMode: true});
             if (this.state.addMode) {
-                this.props.locations.pop();
+                store.dispatch(this.props.deleteLocation(this.state.editRecord));
                 this.setState({addMode: false});
             }
             this.setState({editMode: false});

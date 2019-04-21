@@ -69,7 +69,7 @@ class CategoryPage extends React.Component {
         if (!this.state.editMode) {
             this.setState({editMode: true});
             if (this.state.addMode) {
-                this.props.categories.pop();
+                store.dispatch(this.props.deleteCategory(this.state.editRecord));
                 this.setState({addMode: false});
             }
             this.setState({removeMode: false});
@@ -83,7 +83,7 @@ class CategoryPage extends React.Component {
         if (!this.state.removeMode) {
             this.setState({removeMode: true});
             if (this.state.addMode) {
-                this.props.categories.pop();
+                store.dispatch(this.props.deleteCategory(this.state.editRecord));
                 this.setState({addMode: false});
             }
             this.setState({editMode: false});
